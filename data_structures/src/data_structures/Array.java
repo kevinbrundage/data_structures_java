@@ -53,19 +53,27 @@ public class Array {
 		int intToFind = 5; 
 		for (int x = 0; x < this.intArray.length; x++) {
 			if (this.intArray[x] == intToFind) {
-				System.out.println(String.format("Integer found in the array at index %d", x));
+				System.out.println(String.format("Integer %d found in the array at index %d", intToFind, x));
 				break;
 			}
 		}
 		
 		//binary search O(log n)
 		Arrays.sort(this.stringArray);
-		int stringFoundIndex = this.binarySearch(stringArray, "fifth");
-		System.out.println(String.format("stringFoundKey in custom binary search at index %d", stringFoundIndex));
+		String stringToFind = "fifth";
+		int stringFoundIndex = this.binarySearch(stringArray, stringToFind);
+		System.out.println(String.format("String value '%s' found in custom binary search at index %d", stringToFind, stringFoundIndex));
+		
+		//binary search O(log n)
+		Arrays.sort(this.stringArray);
+		stringToFind = "third";
+		stringFoundIndex = this.recursiveBinarySearch(stringArray, stringToFind, 0, stringArray.length - 1);
+		System.out.println(String.format("String value '%s' found in recursive binary search at index %d", stringToFind, stringFoundIndex));
 		
 		//native binary search
-		stringFoundIndex = Arrays.binarySearch(this.stringArray, "second");
-		System.out.println(String.format("stringFoundKey in native binary search at index %d", stringFoundIndex));
+		stringToFind = "second";
+		stringFoundIndex = Arrays.binarySearch(this.stringArray, stringToFind);
+		System.out.println(String.format("String value '%s' found in Java's binary search at index %d", stringToFind, stringFoundIndex));
 	}
 	
 	
@@ -128,5 +136,30 @@ public class Array {
  
         // stringToFind was not found in the array
         return -1;
+    }
+    
+    
+    private int recursiveBinarySearch(String[] array, String stringToFind, int leftIndex, int rightIndex)
+    {
+        int middle = leftIndex + (rightIndex - leftIndex) / 2;
+
+        // stringToFind was not found in the array
+        if (rightIndex < leftIndex) {
+        	return -1;
+        }
+ 
+        int result = stringToFind.compareTo(array[middle]);
+ 
+        // Check if x is present at the middle of the array
+        if (result == 0)
+            return middle;
+ 
+        if (result > 0) {
+            // It's somewhere in the right half of the remaining array
+        	return recursiveBinarySearch(array, stringToFind, middle + 1, rightIndex);
+        } else {
+            // It's somewhere in the left half of the remaining array
+        	return recursiveBinarySearch(array, stringToFind, leftIndex, middle - 1);
+        }
     }
 }
