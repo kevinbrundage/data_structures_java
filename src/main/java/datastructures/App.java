@@ -1,7 +1,7 @@
 package datastructures;
 
 /**
- * Hello world!
+ * 
  *
  */
 public class App 
@@ -9,7 +9,15 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        
+		App app = new App();
+		app.exerciseArray();
+    }
+
+
+	/***
+	 * 
+	 */
+	public void exerciseArray() {
 		Array array = new Array();
 		System.out.println("----- Array traverse -----");
 		array.traverse();
@@ -25,5 +33,5 @@ public class App
 		System.out.println(" ");
 		System.out.println("----- Array delete -----");
 		array.delete();
-    }
+	}
 }
