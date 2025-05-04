@@ -1,7 +1,15 @@
-package data_structures;
+package datastructures;
 
-public class App {
-	public static void main(String args[]) {
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        
 		Array array = new Array();
 		System.out.println("----- Array traverse -----");
 		array.traverse();
@@ -17,5 +25,5 @@ public class App {
 		System.out.println(" ");
 		System.out.println("----- Array delete -----");
 		array.delete();
-	}
+    }
 }
