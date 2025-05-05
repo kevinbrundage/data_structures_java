@@ -114,8 +114,7 @@ public class Array {
 	/**
 	 * Continually split the array in half until the stringToFind is found
 	 */
-    private int binarySearch(String[] stringArray, String stringToFind)
-    {
+    private int binarySearch(String[] stringArray, String stringToFind) {
         int left = 0;
         int right = stringArray.length - 1;
         
@@ -142,8 +141,7 @@ public class Array {
     }
     
     
-    private int recursiveBinarySearch(String[] array, String stringToFind, int leftIndex, int rightIndex)
-    {
+    private int recursiveBinarySearch(String[] array, String stringToFind, int leftIndex, int rightIndex) {
         int middle = leftIndex + (rightIndex - leftIndex) / 2;
 
         // stringToFind was not found in the array
